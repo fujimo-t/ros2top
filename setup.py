@@ -1,26 +1,26 @@
+from setuptools import find_packages
 from setuptools import setup
 
-package_name = 'ros2_top'
+package_name = 'ros2top'
 
 setup(
     name=package_name,
     version='0.0.0',
-    packages=[package_name],
+    packages=find_packages(exclude=['test']),
     data_files=[
-        ('share/ament_index/resource_index/packages',
-            ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
     ],
-    install_requires=['setuptools'],
+    install_requires=['asciimatics', 'ros2cli', 'setuptools'],
     zip_safe=True,
-    maintainer='fujimoto',
-    maintainer_email='fujimoto@todo.todo',
-    description='TODO: Package description',
+    maintainer='Hironori Fujimoto',
+    maintainer_email='broadbarredfirefish@gmail.com',
+    url='https://github.com/fujimo-t/ros2top',
+    description='Top-like interface as a ros2cli command',
     license='TODO: License declaration',
     tests_require=['pytest'],
     entry_points={
-        'console_scripts': [
-                'ros2_top = ros2_top.ros2_top:main',
+        'ros2cli.command': [
+            'top = ros2top.command.top:TopCommand',
         ],
     },
 )
